@@ -1,3 +1,4 @@
-const displayMessage = require('./0-console');
-
-displayMessage("Hello NodeJS!");
+//
+//
+const message = 'Correct string format';
+console.log(message);
