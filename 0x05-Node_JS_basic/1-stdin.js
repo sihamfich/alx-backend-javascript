@@ -1,27 +1,14 @@
-const readline = require('readline');
+process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-// Create an interface to read input from stdin
-const userInput = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+process.stdin.on('readable', () => {
+  const name = process.stdin.read();
 
-// Ask for user input and process it
-userInput.question('Welcome to ALX, what is your name?\n', (input) => {
-  console.log(`Your name is: ${input}`);
-  userInput.close();
-});
-
-// Display a closing message when the user exits
-userInput.on('close', () => {
-  if (process.stdin.isTTY) {
-    // If input is from a terminal (not piped input), show the closing message
-    console.log('This important software is now closing');
+  // Convert the buffer to a string and trim any extra whitespace
+  if (name !== null) {
+    process.stdout.write(`Your name is: ${name.toString().trim()}\n`);
   }
 });
 
-// Handle EOF (Ctrl+D) and empty input
 process.stdin.on('end', () => {
-  console.log('This important software is now closing');
-  process.exit();
+  process.stdout.write('This important software is now closing\n');
 });
