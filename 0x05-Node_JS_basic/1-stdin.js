@@ -1,11 +1,11 @@
-process.stdout.write('Welcome to Holberton School, what is your name?\n');
+process.stdout.write('Welcome to ALX, what is your name?\n');
 
-process.stdin.on('readable', () => {
-  const name = process.stdin.read();
+process.stdin.on('data', (input) => {
+  // Convert input from buffer to string and remove newline
+  const name = input.toString().trim();
 
-  // Convert the buffer to a string and trim any extra whitespace
-  if (name !== null) {
-    process.stdout.write(`Your name is: ${name.toString().trim()}\n`);
+  if (name) {
+    process.stdout.write(`Your name is: ${name}\n`);
   }
 });
 
