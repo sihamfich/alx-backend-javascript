@@ -14,5 +14,14 @@ userInput.question('Welcome to ALX, what is your name?\n', (input) => {
 
 // Display a closing message when the user exits
 userInput.on('close', () => {
+  if (process.stdin.isTTY) {
+    // If input is from a terminal (not piped input), show the closing message
+    console.log('This important software is now closing');
+  }
+});
+
+// Handle EOF (Ctrl+D) and empty input
+process.stdin.on('end', () => {
   console.log('This important software is now closing');
+  process.exit();
 });
