@@ -6,7 +6,7 @@ process.stdin.on('readable', () => {
   if (name !== null) {
     process.stdout.write(`Your name is: ${name}`);
   }
-});
+}); // Properly close the 'readable' event listener
 
 process.stdin.on('end', () => {
   process.stdout.write('This important software is now closing\n');
